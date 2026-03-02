@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="KretaCsop.OrarendView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid Margin="0">
+        <Border Background="{StaticResource CardDark}" CornerRadius="15" BorderBrush="#333344" BorderThickness="1" Margin="10">
+            <Grid Margin="30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,30">
+                    <TextBlock x:Name="OrarendCim" Text="HETI ÓRAREND" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text=" " FontSize="32" FontWeight="Light" Foreground="{StaticResource AccentGreen}"/>
+                </StackPanel>
+
+                <DataGrid x:Name="OrarendGrid" 
+                          Grid.Row="1" 
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="True" 
+                          Background="Transparent"
+                          BorderThickness="0"
+                          GridLinesVisibility="Horizontal"
+                          HorizontalGridLinesBrush="#1AFFFFFF"
+                          RowHeight="80" 
+                          FontSize="16"
+                          ColumnWidth="*"
+                          CanUserResizeColumns="False">
+
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Padding" Value="10"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridCell">
+                                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </DataGrid.Resources>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ÓRA" Binding="{Binding Idoszak}" Width="0.7*"/>
+                        <DataGridTextColumn Header="HÉTFŐ" Binding="{Binding Hetfo}" Width="1*"/>
+                        <DataGridTextColumn Header="KEDD" Binding="{Binding Kedd}" Width="1*"/>
+                        <DataGridTextColumn Header="SZERDA" Binding="{Binding Szerda}" Width="1*"/>
+                        <DataGridTextColumn Header="CSÜTÖRTÖK" Binding="{Binding Csutortok}" Width="1*"/>
+                        <DataGridTextColumn Header="PÉNTEK" Binding="{Binding Pentek}" Width="1*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
